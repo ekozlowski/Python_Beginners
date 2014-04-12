@@ -21,13 +21,6 @@ If You Are On *nix
 
 Congratulations!  Python is usually packaged with most \*nix installs!
 
-My Personal Contact Info
-------------------------
-
-Edward Kozlowski
-ekozlowski1@gmail.com
-
-Please reach out with any Python related questions that I can help with!
 
 Example Code (List Comprehensions and Generator Expressions
 -----------------------------------------------------------
@@ -58,3 +51,11 @@ Ideas For Future Talks
 
 Python Packaging - Wheels Versus Eggs
 Virtual Environments - Why Bother?
+
+My Personal Contact Info
+------------------------
+
+Edward Kozlowski
+ekozlowski1@gmail.com
+
+Please reach out with any Python related questions that I can help with!
