@@ -2,6 +2,7 @@ Resources for Python Beginners
 ------------------------------
 
 10 Resources To Learn Python:  http://codecondo.com/10-ways-to-learn-python/
+Ned Batchelder's Presentation on Unicode:  https://www.youtube.com/watch?v=sgHbC6udIqc
 
 If You Are On Windows
 ---------------------
