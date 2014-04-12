@@ -46,11 +46,6 @@ Traceback (most recent call last):
 StopIteration
 >>>
 
-Ideas For Future Talks
-----------------------
-
-Python Packaging - Wheels Versus Eggs
-Virtual Environments - Why Bother?
 
 My Personal Contact Info
 ------------------------
