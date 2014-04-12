@@ -52,3 +52,9 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 StopIteration
 >>>
+
+Ideas For Future Talks
+----------------------
+
+Python Packaging - Wheels Versus Eggs
+
