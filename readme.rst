@@ -28,3 +28,27 @@ Edward Kozlowski
 ekozlowski1@gmail.com
 
 Please reach out with any Python related questions that I can help with!
+
+Example Code (List Comprehensions and Generator Expressions
+-----------------------------------------------------------
+
+>>> my_list = [x for x in range(5)]
+>>> my_list
+[0, 1, 2, 3, 4]
+>>> range(5)
+[0, 1, 2, 3, 4]
+>>> my_list = [x for x in range(5) if x > 2]
+>>> my_list
+[3, 4]
+>>> my_list = (x for x in range(5) if x > 2)
+>>> my_list
+<generator object <genexpr> at 0x108bb1fa0>
+>>> my_list.next()
+3
+>>> my_list.next()
+4
+>>> my_list.next()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+StopIteration
+>>>
