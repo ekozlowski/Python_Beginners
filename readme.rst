@@ -57,4 +57,4 @@ Ideas For Future Talks
 ----------------------
 
 Python Packaging - Wheels Versus Eggs
-
+Virtual Environments - Why Bother?
