@@ -7,6 +7,7 @@ Ned Batchelder's Presentation on Unicode:  https://www.youtube.com/watch?v=sgHbC
 
 Python Anywhere:  https://www.pythonanywhere.com/
 
+Hitchhiker's Guide to Python:  http://docs.python-guide.org/en/latest/
 
 If You Are On Windows
 ---------------------
