@@ -9,6 +9,8 @@ Python Anywhere:  https://www.pythonanywhere.com/
 
 Hitchhiker's Guide to Python:  http://docs.python-guide.org/en/latest/
 
+David Beazley Generators:  http://pyvideo.org/video/2575/generators-the-final-frontier
+
 If You Are On Windows
 ---------------------
 
