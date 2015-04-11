@@ -1,0 +1,34 @@
+Monthly meeting presentation topics
+
+Basic code conventions
+    PEP-8
+Functions
+Classes
+Inheritance
+Basic module structure
+    init.py file
+List comprehensions
+Generator comprehensions
+Dictionaries
+    update method
+Sets
+    Set math
+Basic text processing
+Generators
+Coroutines
+Default arguments
+Context managers
+Decorators
+Double_methods
+Virtual environments
+Package management with PIP
+    Requirements.txt file
+Packaging applications
+Source control
+Testing with py.test
+
+
+Favorite modules
+    Requests
+    py.test
+
