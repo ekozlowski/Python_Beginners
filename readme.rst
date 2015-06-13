@@ -34,3 +34,6 @@ Edward Kozlowski
 ekozlowski1@gmail.com
 
 Please reach out with any Python related questions that I can help with!
+
+--- Research resources for Algorithims / Next Step topics
+
