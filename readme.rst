@@ -11,7 +11,7 @@ Hitchhiker's Guide to Python:  http://docs.python-guide.org/en/latest/
 
 David Beazley Generators:  http://pyvideo.org/video/2575/generators-the-final-frontier
 
-Full Stack Python:  http://www.fullstackpython.com/
+Full Stack Python:  http://www.fullstackpython.com/   Specifically:  http://www.fullstackpython.com/best-python-resources.html
 
 If You Are On Windows
 ---------------------
