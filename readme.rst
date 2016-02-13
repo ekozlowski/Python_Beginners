@@ -18,7 +18,7 @@ Full Stack Python:  http://www.fullstackpython.com/   Specifically:  http://www.
 If You Are On Windows
 ---------------------
 
-ActiveState is a great distribution that I highly recommend.  I've used it for years.  You can download it at http://www.activestate.com/activepython/downloads  They do have a free edition, and business support is available if you need it.
+Install Anaconda - https://www.continuum.io/downloads  Comes bundled with tons of goodies for scientific computing, and great utilities like IPython Notebook (Now Jupyter) right out of the box.
 
 If You Are On Mac
 -----------------
