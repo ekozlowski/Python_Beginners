@@ -25,6 +25,8 @@ If You Are On Mac
 
 Congratulations!  Python is built into Mac OSX!  However, you may run across people that swear by "brew installing" Python.  This is because if Apple updates Python, it may mess with anything third-party that you have installed if you use the system installed Python.  Brew installing Python gets around that.
 
+You should also consider installing Anaconda.  https://www.continuum.io/downloads
+
 If You Are On *nix
 ------------------
 
