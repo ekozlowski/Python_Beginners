@@ -15,7 +15,7 @@ DONE - Fix the syntax and semantic bugs that prevent the program from running co
 
 DONE - Change get_user_tasks() to return list of task names instead of task objects.
 
-TODO: Add error handling to add_user(), add_task(), and get_user_tasks() methods
+DONE: Add error handling to add_user(), add_task(), and get_user_tasks() methods
 
 TODO: Optimize TaskManagementSystem to handle large number of users and tasks
 """
@@ -31,6 +31,13 @@ class UserAlreadyExists(Exception):
 class UserNotFoundException(Exception):
     """
     Raised when user lookup fails in TMS.
+    """
+    pass
+
+
+class DuplicateTaskException(Exception):
+    """
+    Raised when an attempt is made to add a task to a user that already has the task.
     """
     pass
 
@@ -64,7 +71,16 @@ class TaskManagementSystem(object):
     def __init__(self):
         self.users = {}  # Stores a dictionary of user objects, keyed by user name.  (This assumes we can't ever have
                          # two users with the same user name.)
-        self.tasks = []  # stores a list of task objects
+        self.tasks = {}  # stores a dictionary of task dictionaries, keyed by user id.
+        # for example:
+        # self.tasks = {1:
+        #                  {'grocery': Task(<userid>, 'grocery')},
+        #                  {'daycare': Task(<userid>, 'daycare')}
+        #              }
+        # This may seem overly complicated, but in the future, this would allow us to track task status, and allows for
+        # easy, fast lookup of tasks based on user id and task name.  It's duplicating information that already exists
+        # in the task object, but this will allow us to extend the framework into persistence later.
+
         # Since this is only at runtime, we can afford to just instantiate with a 0 value.  We would have to persist
         # this in an actual production system.
         self._uid = 0
@@ -106,24 +122,21 @@ class TaskManagementSystem(object):
         Condition:
             The user should not have two or more tasks with the same name
         """
-        # TODO:  Better task checking
         user = self._get_user(user_name)
-        self.tasks.append(Task(user.user_id, task_name))
+        tasks = self.tasks.get(user.user_id, {})  # default to an empty dict for storing new tasks.
+        if task_name in tasks:
+            raise DuplicateTaskException("Task {} already exists for user {}".format(task_name, user_name))
+
+        tasks[task_name] = Task(user.user_id, task_name)
+        # must assign the tasks dict back to the value of self.tasks[user.id], or changes will not persist.
+        self.tasks[user.user_id] = tasks
 
     def get_user_tasks(self, user_name):
         """
         Get task(s) that belongs to the specified user name
             @ user_name: string
         """
-        user_tasks = []
-        user = self._get_user(user_name)
-
-        for task in self.tasks:
-            if task.user_id == user.user_id:
-                user_tasks.append(task)
-
-        return [t.task_name for t in user_tasks]
-
+        return [t for t in self.tasks.get(self._get_user(user_name).user_id)]
 
 if __name__ == "__main__":
     tms = TaskManagementSystem()
@@ -132,9 +145,12 @@ if __name__ == "__main__":
     tms.add_task(u'Bob', u'grocery')
     tms.add_task(u'Bob', u'daycare')
     tms.add_user(u'Ed')
+    tms.add_task(u'Ed', u'videogames')
+    tms.add_task(u'Ed', u'code_some_python')
     tms.add_user(u'Alisa')
     tms.add_user(u'Evan')
     print(tms.get_user_tasks('Bob'))
+    print(tms.get_user_tasks('Ed'))
     for user in tms.users.values():
         print("Userid: {}, Name: {}".format(user.user_id, user.name))
     # should print: ['laundry', 'grocery', 'daycare']
