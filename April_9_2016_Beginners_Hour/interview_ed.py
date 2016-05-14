@@ -50,6 +50,14 @@ class TaskManagementSystem(object):
     def __init__(self):
         self.users = []  # stores a list of user objects
         self.tasks = []  # stores a list of task objects
+        # Since this is only at runtime, we can afford to just instantiate with a 0 value.  We would have to persist
+        # this in an actual production system.
+        self._uid = 0
+
+    @property
+    def unique_id(self):
+        self._uid += 1
+        return self._uid
 
     def add_user(self, user_name):
         """
@@ -62,14 +70,10 @@ class TaskManagementSystem(object):
         """
         if not isinstance(user_name, unicode):
             raise Exception("User name is not a unicode string")
-        # TODO: Better Unique ID management
-        # TODO: Check to see if users are already present
-        unique_id = 0
-        for u in self.users:
-            if u.user_id > unique_id:
-                unique_id = u.id
 
-        self.users.append(User(unique_id, user_name))
+        # TODO: Check to see if users are already present
+
+        self.users.append(User(self.unique_id, user_name))
 
     def add_task(self, user_name, task_name):
         """
@@ -112,6 +116,10 @@ if __name__ == "__main__":
     tms.add_task(u'Bob', u'laundry')
     tms.add_task(u'Bob', u'grocery')
     tms.add_task(u'Bob', u'daycare')
-
-    print tms.get_user_tasks('Bob')
+    tms.add_user(u'Ed')
+    tms.add_user(u'Alisa')
+    tms.add_user(u'Evan')
+    print(tms.get_user_tasks('Bob'))
+    for user in tms.users:
+        print("Userid: {}, Name: {}".format(user.user_id, user.name))
     # should print: ['laundry', 'grocery', 'daycare']
