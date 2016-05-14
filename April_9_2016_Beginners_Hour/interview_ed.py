@@ -45,10 +45,18 @@ class Task(object):
         self.task_name = task_name
 
 
+class UserAlreadyExists(Exception):
+    """
+    Raised when an attempt is made to add a user to the TMS that already exists.
+    """
+    pass
+
+
 class TaskManagementSystem(object):
 
     def __init__(self):
-        self.users = []  # stores a list of user objects
+        self.users = {}  # Stores a dictionary of user objects, keyed by user name.  (This assumes we can't ever have
+                         # two users with the same user name.)
         self.tasks = []  # stores a list of task objects
         # Since this is only at runtime, we can afford to just instantiate with a 0 value.  We would have to persist
         # this in an actual production system.
@@ -71,9 +79,10 @@ class TaskManagementSystem(object):
         if not isinstance(user_name, unicode):
             raise Exception("User name is not a unicode string")
 
-        # TODO: Check to see if users are already present
+        if user_name in self.users:
+            raise UserAlreadyExists("User {} already exists in the TMS.".format(user_name))
 
-        self.users.append(User(self.unique_id, user_name))
+        self.users[user_name] = User(user_id=self.unique_id, name=user_name)
 
     def add_task(self, user_name, task_name):
         """
@@ -86,7 +95,7 @@ class TaskManagementSystem(object):
         """
         # TODO:  Better User lookup
         # TODO:  Better task checking
-        for user in self.users:
+        for user in self.users.values():
             if user.name == user_name:
                 user_id = user.user_id
 
@@ -101,7 +110,7 @@ class TaskManagementSystem(object):
         user_tasks = []
 
         # TODO: This is too many levels deep... Why?
-        for user in self.users:
+        for user in self.users.values():
             if user.name == user_name:
                 for task in self.tasks:
                     if task.user_id == user.user_id:
@@ -120,6 +129,6 @@ if __name__ == "__main__":
     tms.add_user(u'Alisa')
     tms.add_user(u'Evan')
     print(tms.get_user_tasks('Bob'))
-    for user in tms.users:
+    for user in tms.users.values():
         print("Userid: {}, Name: {}".format(user.user_id, user.name))
     # should print: ['laundry', 'grocery', 'daycare']
