@@ -106,14 +106,10 @@ class TaskManagementSystem(object):
 
 if __name__ == "__main__":
     tms = TaskManagementSystem()
-    tms.add_user(u'a')
-    hide = """
-    tms = TaskManagementSystem()
-    tms.add_user('Bob')
-    tms.add_task('Bob', 'laundry')
-    tms.add_task('Bob', 'grocery')
-    tms.add_task('Bob', 'daycare')
+    tms.add_user(u'Bob')
+    tms.add_task(u'Bob', u'laundry')
+    tms.add_task(u'Bob', u'grocery')
+    tms.add_task(u'Bob', u'daycare')
 
     print tms.get_user_tasks('Bob')
     # should print: ['laundry', 'grocery', 'daycare']
-    """
