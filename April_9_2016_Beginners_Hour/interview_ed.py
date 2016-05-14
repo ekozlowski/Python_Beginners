@@ -110,15 +110,14 @@ class TaskManagementSystem(object):
         Get task(s) that belongs to the specified user name
             @ user_name: string
         """
-        # TODO: Simplify Task lookup
         user_tasks = []
+        user = self.users.get(user_name)
+        if user is None:
+            raise UserNotFoundException("Could not find user {} to get tasks from.".format(user_name))
 
-        # TODO: This is too many levels deep... Why?
-        for user in self.users.values():
-            if user.name == user_name:
-                for task in self.tasks:
-                    if task.user_id == user.user_id:
-                        user_tasks.append(task)
+        for task in self.tasks:
+            if task.user_id == user.user_id:
+                user_tasks.append(task)
 
         return [t.task_name for t in user_tasks]
 
