@@ -20,14 +20,15 @@ Add error handling to add_user(), add_task(), and get_user_tasks() methods
 Optimize TaskManagementSystem to handle large number of users and tasks
 """
 
+
 class user(object):
 
     def __init__(self, user_id, name):
-        '''
+        """
         Task object.  This code can not be modified.
             @ user_id: int
             @ name: string
-        '''
+        """
         self.user_id = user_id
         self.name = name
 
@@ -35,13 +36,14 @@ class user(object):
 class task(object):
 
     def __init__(self, user_id, task_name):
-        '''
+        """
         Task object.  This code can not be modified.
             @ user_id: int
             @ task_name: string
-        '''
+        """
         self.user_id = user_id
         self.task_name = task_name
+
 
 class TaskManagementSystem(object):
 
@@ -49,16 +51,15 @@ class TaskManagementSystem(object):
         self.users = []  # stores a list of user objects
         self.tasks = []  # stores a list of task objects
 
-
     def add_user(self, user_name):
-        '''
+        """
         Add a new user
             @ user_name: string
 
         Condition:
             Every user should have a unique name
             Every user should have a unique id
-        '''
+        """
         if not isinstance(user_name, unicode):
             raise Exception("User name is not a unicode string")
         unique_id = 0
@@ -68,16 +69,15 @@ class TaskManagementSystem(object):
 
         self.users.append(user(unique_id, user_name))
 
-
     def add_task(self, user_name, task_name):
-        '''
+        """
         Add a task for a user
             @ user_name: string
             @ task_name: string
 
         Condition:
             The user should not have two or more tasks with the same name
-        '''
+        """
 
         for user in self.users:
             if user.name == user_name:
@@ -85,12 +85,11 @@ class TaskManagementSystem(object):
 
         self.tasks.append(task(user_id, task_name))
 
-
     def get_user_tasks(self, user_name):
-        '''
+        """
         Get task(s) that belongs to the specified user name
             @ user_name: string
-        '''
+        """
 
         user_tasks = []
 
