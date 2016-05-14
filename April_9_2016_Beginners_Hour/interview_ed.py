@@ -11,13 +11,13 @@ You can introduce new methods and class variables.
 
 Goals:
 
-Fix the syntax and semantic bugs that prevent the program from running correctly.
+DONE - Fix the syntax and semantic bugs that prevent the program from running correctly.
 
-Change get_user_tasks() to return list of task names instead of task objects.
+DONE - Change get_user_tasks() to return list of task names instead of task objects.
 
-Add error handling to add_user(), add_task(), and get_user_tasks() methods
+TODO: Add error handling to add_user(), add_task(), and get_user_tasks() methods
 
-Optimize TaskManagementSystem to handle large number of users and tasks
+TODO: Optimize TaskManagementSystem to handle large number of users and tasks
 """
 
 
@@ -62,6 +62,8 @@ class TaskManagementSystem(object):
         """
         if not isinstance(user_name, unicode):
             raise Exception("User name is not a unicode string")
+        # TODO: Better Unique ID management
+        # TODO: Check to see if users are already present
         unique_id = 0
         for u in self.users:
             if u.user_id > unique_id:
@@ -78,7 +80,8 @@ class TaskManagementSystem(object):
         Condition:
             The user should not have two or more tasks with the same name
         """
-
+        # TODO:  Better User lookup
+        # TODO:  Better task checking
         for user in self.users:
             if user.name == user_name:
                 user_id = user.user_id
@@ -90,9 +93,10 @@ class TaskManagementSystem(object):
         Get task(s) that belongs to the specified user name
             @ user_name: string
         """
-
+        # TODO: Simplify Task lookup
         user_tasks = []
 
+        # TODO: This is too many levels deep... Why?
         for user in self.users:
             if user.name == user_name:
                 for task in self.tasks:
