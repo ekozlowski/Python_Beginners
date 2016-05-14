@@ -17,7 +17,15 @@ DONE - Change get_user_tasks() to return list of task names instead of task obje
 
 DONE: Add error handling to add_user(), add_task(), and get_user_tasks() methods
 
-TODO: Optimize TaskManagementSystem to handle large number of users and tasks
+Done - CONDITIONALLY: Optimize TaskManagementSystem to handle large number of users and tasks
+- Condition:
+    - This will handle as many users as you have memory for.
+
+    - Since the users are in dictionaries, truly large numbers of users (millions) will cause the system to likely
+      run out of memory.  Ideally, this should be backed by a database.  Even something like SQLite would be really
+      helpful here, because memory would be conserved.
+
+      In beginners hour, if there's time, we'll try adding a SQLite persistence layer to this.
 """
 
 
