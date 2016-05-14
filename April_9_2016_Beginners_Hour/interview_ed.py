@@ -21,7 +21,7 @@ Optimize TaskManagementSystem to handle large number of users and tasks
 """
 
 
-class user(object):
+class User(object):
 
     def __init__(self, user_id, name):
         """
@@ -33,7 +33,7 @@ class user(object):
         self.name = name
 
 
-class task(object):
+class Task(object):
 
     def __init__(self, user_id, task_name):
         """
@@ -67,7 +67,7 @@ class TaskManagementSystem(object):
             if u.user_id > unique_id:
                 unique_id = u.id
 
-        self.users.append(user(unique_id, user_name))
+        self.users.append(User(unique_id, user_name))
 
     def add_task(self, user_name, task_name):
         """
@@ -83,7 +83,7 @@ class TaskManagementSystem(object):
             if user.name == user_name:
                 user_id = user.user_id
 
-        self.tasks.append(task(user_id, task_name))
+        self.tasks.append(Task(user_id, task_name))
 
     def get_user_tasks(self, user_name):
         """
