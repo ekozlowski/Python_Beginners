@@ -89,6 +89,12 @@ class TaskManagementSystem(object):
 
         self.users[user_name] = User(user_id=self.unique_id, name=user_name)
 
+    def _get_user(self, user_name):
+        user = self.users.get(user_name)
+        if user is None:
+            raise UserNotFoundException("Could not find user {}.".format(user_name))
+        return user
+
     def add_task(self, user_name, task_name):
         """
         Add a task for a user
@@ -99,10 +105,7 @@ class TaskManagementSystem(object):
             The user should not have two or more tasks with the same name
         """
         # TODO:  Better task checking
-        user = self.users.get(user_name)
-        if user is None:
-            raise UserNotFoundException("Could not find user {} to add task to.".format(user_name))
-
+        user = self._get_user(user_name)
         self.tasks.append(Task(user.user_id, task_name))
 
     def get_user_tasks(self, user_name):
@@ -111,9 +114,7 @@ class TaskManagementSystem(object):
             @ user_name: string
         """
         user_tasks = []
-        user = self.users.get(user_name)
-        if user is None:
-            raise UserNotFoundException("Could not find user {} to get tasks from.".format(user_name))
+        user = self._get_user(user_name)
 
         for task in self.tasks:
             if task.user_id == user.user_id:
