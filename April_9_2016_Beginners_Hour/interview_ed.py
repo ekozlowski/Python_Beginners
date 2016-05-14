@@ -1,4 +1,6 @@
-'''
+#!/usr/local/bin/python3
+# encoding: utf-8
+"""
 A supervisor is using the TaskManagementSystem to manage tasks for his workers.
 The system can add users, assign tasks to users, and get task(s) that belong
 to a specific user.
@@ -16,10 +18,7 @@ Change get_user_tasks() to return list of task names instead of task objects.
 Add error handling to add_user(), add_task(), and get_user_tasks() methods
 
 Optimize TaskManagementSystem to handle large number of users and tasks
-'''
-
-#!/usr/bin/env python2.7
-# encoding: utf-8
+"""
 
 class user(object):
 
