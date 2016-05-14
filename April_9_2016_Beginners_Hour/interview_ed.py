@@ -21,6 +21,20 @@ TODO: Optimize TaskManagementSystem to handle large number of users and tasks
 """
 
 
+class UserAlreadyExists(Exception):
+    """
+    Raised when an attempt is made to add a user to the TMS that already exists.
+    """
+    pass
+
+
+class UserNotFoundException(Exception):
+    """
+    Raised when user lookup fails in TMS.
+    """
+    pass
+
+
 class User(object):
 
     def __init__(self, user_id, name):
@@ -44,18 +58,6 @@ class Task(object):
         self.user_id = user_id
         self.task_name = task_name
 
-
-class UserAlreadyExists(Exception):
-    """
-    Raised when an attempt is made to add a user to the TMS that already exists.
-    """
-    pass
-
-class UserNotFoundException(Exception):
-    """
-    Raised when user lookup fails in TMS.
-    """
-    pass
 
 class TaskManagementSystem(object):
 
