@@ -51,6 +51,11 @@ class UserAlreadyExists(Exception):
     """
     pass
 
+class UserNotFoundException(Exception):
+    """
+    Raised when user lookup fails in TMS.
+    """
+    pass
 
 class TaskManagementSystem(object):
 
@@ -93,13 +98,12 @@ class TaskManagementSystem(object):
         Condition:
             The user should not have two or more tasks with the same name
         """
-        # TODO:  Better User lookup
         # TODO:  Better task checking
-        for user in self.users.values():
-            if user.name == user_name:
-                user_id = user.user_id
+        user = self.users.get(user_name)
+        if user is None:
+            raise UserNotFoundException("Could not find user {} to add task to.".format(user_name))
 
-        self.tasks.append(Task(user_id, task_name))
+        self.tasks.append(Task(user.user_id, task_name))
 
     def get_user_tasks(self, user_name):
         """
