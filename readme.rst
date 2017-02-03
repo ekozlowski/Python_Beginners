@@ -15,6 +15,8 @@ David Beazley Generators:  http://pyvideo.org/video/2575/generators-the-final-fr
 
 Full Stack Python:  http://www.fullstackpython.com/   Specifically:  http://www.fullstackpython.com/best-python-resources.html
 
+PyVideo: http://www.pyvideo.org
+
 If You Are On Windows
 ---------------------
 
